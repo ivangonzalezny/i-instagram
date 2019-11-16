@@ -21,6 +21,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText passwordEditText;
     Button loginButton;
     ProgressBar loadingProgressBar;
+    Button signUpButton;
 
     private static final String TAG = "LoginActivity";
     @Override
@@ -32,16 +33,31 @@ public class LoginActivity extends AppCompatActivity {
         passwordEditText = findViewById(R.id.password);
         loginButton = findViewById(R.id.login);
         loadingProgressBar = findViewById(R.id.loading);
+        signUpButton = findViewById(R.id.signUp);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.i(TAG, "onClick");
+                Log.i(TAG, "onClick " + " Log In");
                 String username = usernameEditText.getText().toString();
                 String password = passwordEditText.getText().toString();
                 login(username, password);
             }
         });
+
+        signUpButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.i(TAG, "onClick " + " Sign Up");
+                goSignUpActivity();
+            }
+        });
+    }
+
+    private void goSignUpActivity() {
+        Log.i(TAG, "Navigating to Sign Up Activity");
+        Intent i = new Intent(this, SignUpActivity.class);
+        startActivity(i);
     }
 
     private void login(String username, String password) {
@@ -67,3 +83,5 @@ public class LoginActivity extends AppCompatActivity {
         finish();
     }
 }
+
+
