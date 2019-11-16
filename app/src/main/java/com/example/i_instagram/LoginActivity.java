@@ -35,6 +35,8 @@ public class LoginActivity extends AppCompatActivity {
         loadingProgressBar = findViewById(R.id.loading);
         signUpButton = findViewById(R.id.signUp);
 
+        ParseUser currentUser = ParseUser.getCurrentUser();
+
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

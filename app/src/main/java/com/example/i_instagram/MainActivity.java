@@ -52,39 +52,79 @@ public class MainActivity extends AppCompatActivity {
         image = findViewById(R.id.ivPostImage);
         submit = findViewById(R.id.btnPost);
         logout = findViewById(R.id.btnLogOut);
-        
-        queryPost();
 
-        capture.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                launchCamera();
-            }
-        });
+        ParseUser currentUser = ParseUser.getCurrentUser();
+        if (currentUser != null) {
+            // do stuff with the user
+            queryPost();
 
-        submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String description = etDescription.getText().toString();
-                ParseUser user = ParseUser.getCurrentUser();
-                if (photoFile == null || image.getDrawable() == null) {
-                    Log.e(TAG, "No photo to submit");
-                    Toast.makeText(MainActivity.this, "There is no photo", Toast.LENGTH_SHORT).show();
-                    return;
+            capture.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    launchCamera();
                 }
-                savePost(description, user, photoFile);
-            }
-        });
+            });
 
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ParseUser user = ParseUser.getCurrentUser();
-                ParseUser.logOut();
-                Log.i(TAG, "Log out successful");
-                gotoLoginActivity();
-            }
-        });
+            submit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    String description = etDescription.getText().toString();
+                    ParseUser user = ParseUser.getCurrentUser();
+                    if (photoFile == null || image.getDrawable() == null) {
+                        Log.e(TAG, "No photo to submit");
+                        Toast.makeText(MainActivity.this, "There is no photo", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    savePost(description, user, photoFile);
+                }
+            });
+
+            logout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    ParseUser user = ParseUser.getCurrentUser();
+                    ParseUser.logOut();
+                    Log.i(TAG, "Log out successful");
+                    gotoLoginActivity();
+                }
+            });
+        } else {
+            // show the signup or login screen
+            gotoLoginActivity();
+        }
+
+//        queryPost();
+//
+//        capture.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                launchCamera();
+//            }
+//        });
+//
+//        submit.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                String description = etDescription.getText().toString();
+//                ParseUser user = ParseUser.getCurrentUser();
+//                if (photoFile == null || image.getDrawable() == null) {
+//                    Log.e(TAG, "No photo to submit");
+//                    Toast.makeText(MainActivity.this, "There is no photo", Toast.LENGTH_SHORT).show();
+//                    return;
+//                }
+//                savePost(description, user, photoFile);
+//            }
+//        });
+//
+//        logout.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                ParseUser user = ParseUser.getCurrentUser();
+//                ParseUser.logOut();
+//                Log.i(TAG, "Log out successful");
+//                gotoLoginActivity();
+//            }
+//        });
     }
 
     private void gotoLoginActivity() {
