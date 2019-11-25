@@ -11,7 +11,7 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="login_button">LOGIN</string>
-    <string name="sign_up_button">SIGN UP</string>
+    <string name="sign_up_button">Create a New Account</string>
     <string name="what_story">Tell me what\'s happening!</string>
     <string name="shot">TAKE PICTURE</string>
     <string name="img">image</string>
@@ -23,4 +23,5 @@
     <string name="compose">Compose</string>
     <string name="profile">Profile</string>
     <string name="image_for_post">Image for post</string>
+    <string name="description">description</string>
 </resources>

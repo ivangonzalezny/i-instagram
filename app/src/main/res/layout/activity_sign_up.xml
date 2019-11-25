@@ -9,32 +9,48 @@
     tools:context=".SignUpActivity"
     android:orientation="vertical" >
 
-<EditText
-    android:id="@+id/username_new"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:ems="10"
-    android:hint="@string/prompt_username"
-    android:importantForAutofill="no"
-    android:inputType="text"/>
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="135dp"
+        android:layout_height="168dp"
+        android:background="@drawable/instagram_user_outline_24"
+        tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
-<com.google.android.material.textfield.TextInputLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:background="@drawable/nav_logo_whiteout"
+        tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/password_new_user"
+    <EditText
+        android:id="@+id/username_new"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/prompt_password"
-        android:inputType="textPassword"/>
-</com.google.android.material.textfield.TextInputLayout>
+        android:ems="10"
+        android:hint="@string/prompt_username"
+        android:importantForAutofill="no"
+        android:inputType="text"/>
 
-<Button
-    android:id="@+id/sign_up_new"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center_horizontal"
-    android:layout_marginBottom="132dp"
-    android:text="@string/sign_up" />
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/password_new_user"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/prompt_password"
+            android:inputType="textPassword"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/sign_up_new"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="132dp"
+        android:background="@color/blue_5"
+        android:text="@string/sign_up"
+        android:textColor="#FFFFFF" />
 </LinearLayout>

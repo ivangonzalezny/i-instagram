@@ -5,45 +5,24 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="10dp"
     android:gravity="center_horizontal"
     android:orientation="vertical"
+    android:layout_centerVertical="true"
     tools:context=".LoginActivity"
-    android:layout_margin="10dp">
+    android:background="#FFFFFF">
 
-    <EditText
-        android:id="@+id/username"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/prompt_username"
-        android:importantForAutofill="no"
-        android:inputType="text"/>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/prompt_password"
-            android:inputType="textPassword"/>
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <Button
-        android:id="@+id/login"
+    <ImageView
+        android:id="@+id/imageView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="132dp"
-        android:text="@string/action_sign_in" />
+        android:layout_height="100dp"
+        android:background="@drawable/nav_logo_whiteout"
+        tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
     <TextView
-        android:id="@+id/tvNewUser"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/new_user"
+        android:text=""
         android:textColor="#919191"
         android:textSize="18sp"
         android:textStyle="italic"
@@ -55,7 +34,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="@string/sign_up_button" />
+        android:background="@color/blue_5"
+        android:text="@string/sign_up_button"
+        android:textColor="#FFFFFF" />
 
     <ProgressBar
         android:id="@+id/loading"
@@ -63,5 +44,37 @@
         android:layout_height="120dp"
         android:layout_gravity="center"
         android:visibility="gone" />
+
+    <EditText
+        android:id="@+id/username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/prompt_username"
+        android:importantForAutofill="no"
+        android:inputType="text" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/prompt_password"
+            android:inputType="textPassword" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="132dp"
+        android:background="#FFFFFF"
+        android:text="@string/action_sign_in"
+        android:textColor="@color/blue_5" />
 
 </LinearLayout>
