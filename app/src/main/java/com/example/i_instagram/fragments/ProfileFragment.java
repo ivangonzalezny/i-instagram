@@ -39,19 +39,19 @@ public class ProfileFragment extends PostsFragment {
         Log.i(TAG, "Entering query post");
         ParseQuery<Post> postQuery = new ParseQuery<Post>(Post.class);
         postQuery.include(Post.KEY_USER);
-//        postQuery.setLimit(20);
-//        postQuery.addDescendingOrder(Post.KEY_CREATED_AT);
+        postQuery.setLimit(20);
+        postQuery.addDescendingOrder(Post.KEY_CREATED_AT);
         postQuery.whereEqualTo(Post.KEY_USER, ParseUser.getCurrentUser());
 
         postQuery.findInBackground(new FindCallback<Post>() {
             @Override
-            public void done(List<Post> posts, ParseException e) {
+            public void done(List<Post> newPosts, ParseException e) {
                 if ( e != null) {
                     Log.e(TAG, "Error with query");
                     e.printStackTrace();
                     return;
                 }
-                posts.addAll(posts);
+                posts.addAll(newPosts);
                 Log.i(TAG, "Adding all posts");
                 adapter.notifyDataSetChanged();
                 Log.i(TAG, "Notifying the adapter");

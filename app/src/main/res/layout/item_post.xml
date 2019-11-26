@@ -9,17 +9,9 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Testing Item Post Single Item"
-        android:textSize="30sp" />
-
-    <TextView
         android:id="@+id/tvHandler"
         android:layout_width="match_parent"
         android:layout_height="108dp"
-        android:textAppearance="@style/ActionBarTitle"
         android:textSize="28sp"
         tools:text="Ivan" />
 

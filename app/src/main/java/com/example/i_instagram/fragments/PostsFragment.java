@@ -77,21 +77,21 @@ public class PostsFragment extends Fragment {
         final ParseQuery<Post> postQuery = new ParseQuery<Post>(Post.class);
         postQuery.include(Post.KEY_USER);
         Log.i(TAG, "include: KEY USER");
-//        postQuery.setLimit(20);
-//        Log.i(TAG, "setLimit(20)");
-//        postQuery.addDescendingOrder(Post.KEY_CREATED_AT);
-//        Log.i(TAG, "addDescendingOrder");
+        postQuery.setLimit(20);
+        Log.i(TAG, "setLimit(20)");
+        postQuery.addDescendingOrder(Post.KEY_CREATED_AT);
+        Log.i(TAG, "addDescendingOrder");
 
         postQuery.findInBackground(new FindCallback<Post>() {
             @Override
-            public void done(List<Post> posts, ParseException e) {
+            public void done(List<Post> newPosts, ParseException e) {
                 Log.i(TAG, "done called");
                 if ( e != null) {
                     Log.e(TAG, "Error with query");
                     e.printStackTrace();
                     return;
                 }
-                posts.addAll(posts);
+                posts.addAll(newPosts);
                 Log.i(TAG, "post.addAll(posts)");
                 adapter.notifyDataSetChanged();
                 Log.i(TAG, "notifyDataSetChanged()");
