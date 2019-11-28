@@ -31,8 +31,8 @@ public class PostsFragment extends Fragment {
     protected PostsAdapter adapter;
     protected List<Post> posts;
 
-//    SwipeRefreshLayout swipeContainer;
-//    EndlessRecyclerViewScrollListener scrollListener;
+    SwipeRefreshLayout swipeContainer;
+    //EndlessRecyclerViewScrollListener scrollListener;
 
     @Nullable
     @Override
@@ -43,7 +43,7 @@ public class PostsFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         rvPosts = view.findViewById(R.id.rvPosts);
-//        swipeContainer = view.findViewById(R.id.swipeContainer);
+        swipeContainer = view.findViewById(R.id.swipeContainer);
         // create the data source
         posts = new ArrayList<>();
         // create the adapter
@@ -51,26 +51,32 @@ public class PostsFragment extends Fragment {
         // set the adapter in the recycler view
         rvPosts.setAdapter(adapter);
         // set the layout manager on the recycler view
-        rvPosts.setLayoutManager(new LinearLayoutManager(getContext()));
 
-//        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-//            @Override
-//            public void onRefresh() {
-//                Log.i(TAG, "setOnRefreshListener(): Fetching new data");
-//                populateHomeTimeline();
-//            }
-//        });
-//
-//        scrollListener = new EndlessRecyclerViewScrollListener(layoutManager) {
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        rvPosts.setLayoutManager(layoutManager);
+
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                Log.i(TAG, "setOnRefreshListener(): Fetching new data");
+                queryPost();
+            }
+        });
+
+        // scrollListener = new EndlessRecyclerViewScrollListener(layoutManager) {
 //            @Override
 //            public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
 //                Log.i(TAG, "onLoadMore: " + page);
 //                loadMoreData();
 //            }
 //        };
-        queryPost();
-        Log.i(TAG, "queryPost() called");
+//        queryPost();
+//        Log.i(TAG, "queryPost() called");
     }
+
+//    private void loadMoreData() {
+//        return;
+//    }
 
 
     protected void queryPost() {
@@ -94,6 +100,8 @@ public class PostsFragment extends Fragment {
                 posts.addAll(newPosts);
                 Log.i(TAG, "post.addAll(posts)");
                 adapter.notifyDataSetChanged();
+                swipeContainer.setRefreshing(false);
+
                 Log.i(TAG, "notifyDataSetChanged()");
 
                 for (int i = 0; i < posts.size(); i++) {
